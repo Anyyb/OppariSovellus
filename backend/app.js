@@ -2,6 +2,7 @@ import express from "express";
 import {MONGODB_URI} from "./config/config.js";
 import {info, errorM} from "./utils/logger.js";
 import { usersRouter } from "./routers/userRoutes.js";
+import { hobbiesRouter} from "./routers/hobbyRoutes.js";
 
 import mongoose from "mongoose";
 
@@ -21,5 +22,6 @@ mongoose.connect(MONGODB_URI)
   });
 
   app.use("/api/users",usersRouter)
+  app.use("/api/hobbies",hobbiesRouter)
   
   export default app;

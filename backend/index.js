@@ -8,4 +8,5 @@ import {info} from "./utils/logger.js";
 app.listen(PORT, () => {
     info(`Server is running on http://localhost:${PORT}`);
     info(`Server is running on http://localhost:${PORT}/api/users`);
+    info(`Server is running on http://localhost:${PORT}/api/hobbies`);
 });
