@@ -1,4 +1,5 @@
 import { Hobbies } from "../models/hobbies.js";
+import { User } from "../models/user.js";
 
 const getHobbies = async ( req,res ) => {
     try {
@@ -11,14 +12,22 @@ const getHobbies = async ( req,res ) => {
 }
 const addHobby = async ( req, res ) => {
     try {
-        const{ name }= req.body;
+        const{ name, username }= req.body;
 
         if(req.body.name === undefined){
             return res.status(400).json({ error: "Error content missing"})
         }
+
+        const user = await User.findOne({username});
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
         const hobby = new Hobbies({
            name,
         });
+
+        user.hobbies.push(name);
+        hobby.user.push(username);
 
         const savedHobby = await hobby.save()
         res.status(201).json(savedHobby);
