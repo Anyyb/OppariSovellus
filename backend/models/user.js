@@ -10,6 +10,11 @@ const userSchema = mongoose.Schema ({
         required:true,
         unique:true,
     },
+    img: { 
+        data: Buffer,
+        contentType: String,
+        required: true
+    },
     passwordHash:{
         type: String,
         required: true,
@@ -17,10 +22,42 @@ const userSchema = mongoose.Schema ({
     hobbies:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:'Hobbies'
+            ref:'Hobbies',
+            required: false
         }
-    ]
+    ],
+    friends: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'User',
+            required: false
+        }
+    ],
+    friendsRequest: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            unique:true,
+            required: false
+        }
+    ],
+    completedTasks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Task',
+            unique:true,
+            required: false
+        }
+    ],
 
+});
+userSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+      returnedObject.id = returnedObject._id.toString()
+      delete returnedObject._id
+      delete returnedObject.__v
+      delete returnedObject.passwordHash
+    }
 });
 const User = mongoose.model("User",userSchema);
 

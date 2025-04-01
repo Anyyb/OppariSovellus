@@ -10,6 +10,10 @@ const getUsers = async ( req,res ) => {
         res.status()
     }
 }
+
+
+
+
 const addUser = async ( req, res ) => {
     try {
         const{ username, email, password}= req.body;
@@ -19,10 +23,19 @@ const addUser = async ( req, res ) => {
         if(req.body.username === undefined || req.body.password === undefined ){
             return res.status(400).json({ error: "Error content missing"})
         }
+        
+        if (!req.file) {
+            return res.status(400).json({error: "No file"});
+        }
+
         const user = new User({
             username,
             email,
             passwordHash,
+            img: {
+                data: req.file.buffer, // kuva binäärimuodossa
+                contentType: req.file.mimetype // mikä tiedostomuoto mimetype
+            }
         });
 
         const savedUser = await user.save()

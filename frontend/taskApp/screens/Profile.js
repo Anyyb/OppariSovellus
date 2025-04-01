@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View , Pressable} from 'react-native';
 
-export default function TasksScreen() {
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       
