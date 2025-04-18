@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#9D83BC',
+    backgroundColor: '#110D15',
     alignItems: 'center',
     justifyContent: 'center',
     gap:14,
@@ -110,11 +110,14 @@ const styles = StyleSheet.create({
     marginTop:20,
   },
   header: {
-    width:'100%',
+    width:'70%',
+    color:'white',
+    textAlign: 'center',
+    textAlignVertical: 'center', 
     height:50,
     borderRadius: 20,
     fontSize:20,
-    backgroundColor: '#694890',
+    backgroundColor: 'black',
     padding:20,
   },
 });

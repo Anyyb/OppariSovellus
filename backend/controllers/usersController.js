@@ -11,9 +11,6 @@ const getUsers = async ( req,res ) => {
     }
 }
 
-
-
-
 const addUser = async ( req, res ) => {
     try {
         const{ username, email, password}= req.body;
@@ -23,7 +20,7 @@ const addUser = async ( req, res ) => {
         if(req.body.username === undefined || req.body.password === undefined ){
             return res.status(400).json({ error: "Error content missing"})
         }
-        
+
         if (!req.file) {
             return res.status(400).json({error: "No file"});
         }

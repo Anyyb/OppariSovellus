@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View , Pressable, Image} from 'react-native';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//import DrawerNavigation from '../navigations/DrawerNavigation.js';
 import TasksScreen from '../screens/Tasks.js';
 import ProfileScreen from '../screens/Profile.js';
 import HomeScreen from '../screens/Home.js';
 import FriendsScreen from '../screens/Friends.js';
-import DrawerNavigation from '../navigations/DrawerNavigation.js';
-const MyBottomTab = createBottomTabNavigator();
 
+const Tab = createBottomTabNavigator();
 
 const navigationStyles = {
   headerShown: false,
@@ -19,17 +19,16 @@ const navigationStyles = {
 
 export default function BottomTabNavigation() {
   return (
-    <MyBottomTab.Navigator screenOptions={navigationStyles} >
-    <DrawerNavigation/>
-      <MyBottomTab.Screen name="Home" component={HomeScreen}options={{
-      tabBarIcon: ({ size }) => (
+    <Tab.Navigator screenOptions={navigationStyles}>
+      <Tab.Screen name="HomeTabs" component={HomeScreen}options={{
+       tabBarLabel: 'Home', tabBarIcon: ({ size }) => (
       <Image 
         source={require('../assets/icons/home.png')} 
         style={{ width: size, height: size, tintColor: 'white' }} 
       />
     ),
   }}/>
-      <MyBottomTab.Screen name="Tasks" component={TasksScreen}options={{
+      <Tab.Screen name="Tasks" component={TasksScreen}options={{
     tabBarIcon: ({ size }) => (
       <Image 
         source={require('../assets/icons/tasks.png')} 
@@ -37,7 +36,7 @@ export default function BottomTabNavigation() {
       />
     ),
   }}/>
-      <MyBottomTab.Screen name="Friens" component={FriendsScreen}options={{
+      <Tab.Screen name="Friends" component={FriendsScreen}options={{
     tabBarIcon: ({ size }) => (
       <Image 
         source={require('../assets/icons/friends.png')} 
@@ -45,7 +44,7 @@ export default function BottomTabNavigation() {
       />
     ),
   }}/>
-      <MyBottomTab.Screen name="Profile" component={ProfileScreen}options={{
+      <Tab.Screen name="Profile" component={ProfileScreen}options={{
     tabBarIcon: ({ size }) => (
       <Image 
         source={require('../assets/icons/profile.png')} 
@@ -53,6 +52,6 @@ export default function BottomTabNavigation() {
       />
     ),
   }}/>
-    </MyBottomTab.Navigator>
+    </Tab.Navigator>
   );
 };
