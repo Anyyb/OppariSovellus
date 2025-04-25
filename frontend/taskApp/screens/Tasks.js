@@ -4,23 +4,23 @@ export default function TasksScreen() {
 
 
 const dailyDATA = [
-  { id: '1', name:'mene keikalle yksin', source: require('../assets/cards/consert.png') },
-  { id: '2', name:'shoppaile yksin', source: require('../assets/cards/shopping.png') },
-  { id: '3', name:'kolmas tehtävä', source: require('../assets/cards/consert.png') },
-  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/shopping.png') },
+  { id: '1', name:'go to beach', source: require('../assets/cards/beach.png') },
+  { id: '2', name:'go to movies', source: require('../assets/cards/movies.png') },
+  { id: '3', name:'take a cooking class', source: require('../assets/cards/cooking.png') },
+  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/beach.png') },
 ];
 const monthlyDATA = [
-  { id: '1', name:'mene keikalle yksin', source: require('../assets/cards/consert.png') },
-  { id: '2', name:'shoppaile yksin', source: require('../assets/cards/shopping.png') },
-  { id: '3', name:'kolmas tehtävä', source: require('../assets/cards/consert.png') },
-  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/shopping.png') },
+  { id: '1', name:'go to beach', source: require('../assets/cards/beach.png') },
+  { id: '2', name:'go to movies', source: require('../assets/cards/movies.png') },
+  { id: '3', name:'take a cooking class', source: require('../assets/cards/cooking.png') },
+  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/beach.png') },
 ];
 
 const weeklyDATA = [
-  { id: '1', name:'mene keikalle yksin', source: require('../assets/cards/consert.png') },
-  { id: '2', name:'shoppaile yksin', source: require('../assets/cards/shopping.png') },
-  { id: '3', name:'kolmas tehtävä', source: require('../assets/cards/consert.png') },
-  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/shopping.png') },
+  { id: '1', name:'go to beach', source: require('../assets/cards/beach.png') },
+  { id: '2', name:'go to movies', source: require('../assets/cards/movies.png') },
+  { id: '3', name:'take a cooking class', source: require('../assets/cards/cooking.png') },
+  { id: '4', name:'neljäs tehtävä', source: require('../assets/cards/beach.png') },
 ];
 
  const randomTaskWeek = weeklyDATA[Math.floor(Math.random() *weeklyDATA.length)];
@@ -32,35 +32,38 @@ const handlePress = (name) =>{
 
   return (
  
-    <View style={styles.container}> 
-       <Text style={styles.header}>Monthly task</Text> 
+    <View style={styles.container}>
+       <View style={styles.wrapContainer}> 
+       
        <View style={styles.monthlyContainer}>
-     
+     <Text style={styles.header}>Monthly task</Text> 
       <Pressable onPress={() => handlePress(randomTaskMonth.name)}>
-      <Image source={randomTaskMonth.source}/>
+      <Image source={randomTaskMonth.source}style={styles.taskImage}/>
       </Pressable>
 
       </View>
-      <Text style={styles.header}>Weekly tasks</Text> 
-      <View style={styles.weeklyContainer}>
       
+      <View style={styles.weeklyContainer}>
+      <Text style={styles.header}>Weekly task</Text> 
       <Pressable onPress={() => handlePress(randomTaskWeek.name)}>
-      <Image source={randomTaskWeek.source}/>
+      <Image source={randomTaskWeek.source}style={styles.taskImage}/>
       </Pressable>
         
       </View>
-      <Text style={styles.header}>Daily tasks</Text> 
+      
       <View style={styles.dailyContainer}>
+      <Text style={styles.header}>Daily tasks</Text> 
       <FlatList
           data={dailyDATA}
           horizontal
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
             <Pressable onPress={() => handlePress(item.name)}>
-              <Image source={item.source}/>
+              <Image source={item.source}style={styles.taskImage}/>
             </Pressable>
             )}
         />
+        </View>
       </View>
     </View>
   );
@@ -69,55 +72,58 @@ const handlePress = (name) =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection:'column',
-    backgroundColor: '#110D15',
-    alignItems: 'center',
     justifyContent: 'center',
-    gap:14,
-  },
-  weeklyContainer: {
-    flex:1,
-    width:150,
     alignItems: 'center',
-    justifyContent: 'center',
-    margin: 20,
   },
-  monthlyContainer: {
-    flex:1,
-    width:150,
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 20,
-  },
-  dailyContainer: {
+  wrapContainer: {
     flex:2,
-    width:'100%',
-  },
-  TopBar: {
-    flex:1,
-    width: '100%',
-    height:'12%',
-    backgroundColor: 'black',
+    borderColor: 'grey',
+    borderWidth: 1,
+    backgroundColor: '#110D15',
+    padding:10,
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  monthlyContainer:{
+    width:'100%',
+    alignItems: 'center',
+  },
+  weeklyContainer:{
+    width:'100%',
+    alignItems: 'center',
+  },
+  dailyContainer:{
+    width:'100%',
+    alignItems: 'center',
   },
   text: {
-    color:'white',
-    textAlign: 'center',
-    textAlignVertical: 'center', 
-    fontSize:20,
-    padding:20,
-    marginTop:20,
+    fontSize: 18,
+    lineHeight: 24,
+    color: 'white',
+    padding:15,
+    fontFamily: 'georgia',
+    textAlign:'center',
+    textAlignVertical:'center',
   },
   header: {
-    width:'70%',
-    color:'white',
-    textAlign: 'center',
-    textAlignVertical: 'center', 
-    height:50,
-    borderRadius: 20,
-    fontSize:20,
+    padding:5,
+    margin:10,
+    width:'90%',
+    textAlign:'center',
+    textAlignVertical:'center',
+    fontSize: 18,
+    color: 'white',
+    fontFamily: 'georgia',
     backgroundColor: 'black',
-    padding:20,
+    borderColor: 'grey',
+    borderWidth: 1,
   },
+  taskImage: {
+    width: 130,
+    height: 150,
+    resizeMode: 'cover',
+    margin: 5,
+    borderRadius:15,
+    borderWidth: 3,
+    borderColor: 'black',
+  }
 });
