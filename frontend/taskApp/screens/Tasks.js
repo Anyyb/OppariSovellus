@@ -27,7 +27,18 @@ const weeklyDATA = [
  const randomTaskMonth = monthlyDATA[Math.floor(Math.random() * monthlyDATA.length)];
 
 const handlePress = (name) =>{
-  Alert.alert(`Merkataanko " ${name} " tehtävä tehdyksi`);
+  Alert.alert(`Do you want to mark " ${name} " as completed task`,'',
+    [
+      {
+        text: 'cancel',
+        onPress: () => console.log('task not completed'),
+        style: 'cancel'
+      },
+      {
+        text: 'complete',
+        onPress: () => console.log('task completed')
+      }
+    ]);
 };
 
   return (

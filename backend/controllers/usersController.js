@@ -1,6 +1,7 @@
 import { User } from '../models/user.js';
 import bcrypt from "bcrypt";
 
+
 const getUsers = async ( req,res ) => {
     try {
         const users = await User.find({}).populate("hobbies",{name:1});
@@ -21,18 +22,10 @@ const addUser = async ( req, res ) => {
             return res.status(400).json({ error: "Error content missing"})
         }
 
-        if (!req.file) {
-            return res.status(400).json({error: "No file"});
-        }
-
         const user = new User({
             username,
             email,
             passwordHash,
-            img: {
-                data: req.file.buffer, // kuva binäärimuodossa
-                contentType: req.file.mimetype // mikä tiedostomuoto mimetype
-            }
         });
 
         const savedUser = await user.save()

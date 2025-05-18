@@ -1,38 +1,71 @@
-import { StyleSheet, Text, View , Pressable} from 'react-native';
+import { StyleSheet, Text, View , Pressable, Image} from 'react-native';
 
 export default function ProfileScreen() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <View style={styles.infoContainer}>
-        <Text style={styles.header}>CZONE</Text>
-        <Text style={styles.text}> Discover new opportunities and increase your personal growth with CZONE.</Text>
-        <View style={styles.profileContainer}></View>
+    return (
+      <View style={styles.container}>
+        <View style={styles.row}>
+        <View style={styles.leftColumn}>
+        <Text style={styles.header}>Profile</Text>
         </View>
-        <View style={styles.tasksContainer}>
-        <Text style={styles.header}>Completed</Text>
+        <View style={styles.rightColumn}>
+        <Image source={require('../assets/img/profiilikuva.png')} style={styles.image} />
+          <View style={styles.box}>
+          <Text style={styles.header}>Tasks</Text>
+            <Text style={styles.text}>1/10</Text>
+            </View>
+          <View style={styles.box}>
+          <Text style={styles.header}>Points</Text>
+            <Text style={styles.text}>1/100</Text>
+            </View>
+          <View style={styles.box}>
+          <Text style={styles.header}>Tasks together</Text>
+            <Text style={styles.text}>1/10</Text>
+            </View>
         </View>
-        
         </View>
-    </View>
-  );
+        <View style={styles.completedContainer}>
+          <Text style={styles.header}>Completed</Text>
+          <Text style={styles.text}>Here will be icons for completed tasks</Text>
+        </View>
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    backgroundColor: '#110D15',
+    padding:20,
   },
   row: {
     flexDirection: 'row',
+    marginBottom: 20,
+  },
+  leftColumn: {
+    flex:1,
     justifyContent: 'space-between',
     width: '100%',
+    borderColor: 'grey',
+    borderWidth: 1, 
+    shadowColor: '#000',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    shadowOffset: { width: 0, height: 9 },
+    shadowOpacity: 0.1,
+    shadowRadius: 15,
+    elevation: 5,
   },
-  infoContainer: {
+  rightColumn: {
     width:'55%',
     height:'65%',
-    marginLeft:10,
+    alignItems:'center',
+    
+  },
+  box: {
+    margin:10,
+    borderRadius: 8,
+    width: '70%',
+    alignItems: 'center',
     borderColor: 'grey',
     borderWidth: 1, 
     shadowColor: '#000',
@@ -42,11 +75,13 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
     elevation: 5,
   },
-  profileContainer: {
-    width:'55%',
-    height:'55%',
+  image: {
+    width: 100,
+    height: 100,
+    margin: 10,
+    borderRadius:40,
     borderColor: 'grey',
-    borderWidth: 1, 
+    borderWidth: 2, 
     shadowColor: '#000',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     shadowOffset: { width: 0, height: 9 },
@@ -54,10 +89,7 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
     elevation: 5,
   },
-  tasksContainer: {
-    marginTop:40,
-    marginLeft:50,
-    marginRight:50,
+  completedContainer: {
     borderColor: 'grey',
     borderWidth: 1, 
     shadowColor: '#000',

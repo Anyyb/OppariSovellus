@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View , Pressable, Image, TextInput} from 'react-native';
 import { useState, useEffect,useContext } from 'react';
+import Notification from'../components/notifications';
 import createUserService from '../services/signup.js';
 
 export default function SingupScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null)
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -15,8 +17,8 @@ const handleaddNewUser =  async () => {
   
   const newUser = {
     username: newUsername,
-    email: email,
     password: newPassword,
+    email: email,
   }
   try {
     await createUserService.createUser(newUser)
@@ -31,6 +33,7 @@ const handleaddNewUser =  async () => {
 }
   return (
     <View style={styles.container}>
+      <Notification message={errorMessage}/>
       <View style={styles.infoContainer}>
         <Text style={styles.header}>Become a part of CZONE community! </Text>
         <CreateUserForm handleaddNewUser={handleaddNewUser} newUsername={newUsername} 

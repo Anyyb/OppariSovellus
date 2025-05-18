@@ -21,6 +21,27 @@ const userSchema = mongoose.Schema ({
             required: false
         }
     ],
+    friends: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'User',
+            required: false
+        }
+    ],
+    friendsRequest: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: false
+        }
+    ],
+    completedTasks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Task',
+            required: false
+        }
+    ],
 });
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "node fix.js"
   },
   "author": "anu",
   "license": "ISC",
@@ -14,7 +15,6 @@
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.12.1",
-    "multer": "^1.4.5-lts.2"
+    "mongoose": "^8.12.1"
   }
 }

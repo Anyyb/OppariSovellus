@@ -34,11 +34,10 @@ const navigationStyles = ({ navigation }) => ({
     width: 200,
   },
 });
-
 export default function DrawerNavigation() {
   return (
     <Drawer.Navigator  screenOptions={navigationStyles}>
-    <Drawer.Screen name="Home" component={BottomTabNavigation} />
+    <Drawer.Screen name="CZONE" component={BottomTabNavigation} />
     <Drawer.Screen name="Singup" component={SingupScreen}/>
     <Drawer.Screen name="Login" component={LoginScreen}/>
   </Drawer.Navigator>
